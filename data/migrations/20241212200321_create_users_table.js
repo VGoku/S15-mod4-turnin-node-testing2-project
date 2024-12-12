@@ -3,12 +3,12 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return knex.schema.createTable('users', (table) => {
-        table.increments('id');
-        table.string('username', 128).notNullable().unique();
-        table.string('password', 128).notNullable();
+    return knex.schema.createTable('dragons', (table) => {
+        table.increments('id'); // Primary key
+        table.string('name', 128).notNullable();
+        table.string('type', 128).notNullable();
         table.timestamps(true, true);
-    });
+      });
 };
 
 /**
@@ -16,5 +16,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('users');
+    return knex.schema.dropTableIfExists('dragons');;
 };
