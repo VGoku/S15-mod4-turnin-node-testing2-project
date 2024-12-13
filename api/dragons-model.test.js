@@ -6,6 +6,10 @@ beforeEach(async () => {
   await db("dragons").truncate();
 });
 
+afterAll(async () => {
+  await db.destroy();  // Ensure to close DB connection after all tests
+})
+
 describe("dragons model", () => {
   test("findById retrieves the correct dragon by ID", async () => {
     // Insert a new dragon into the database and get the dragon's ID

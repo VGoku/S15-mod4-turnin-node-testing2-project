@@ -7,6 +7,10 @@ beforeEach(async () => {
   await db("dragons").truncate();
 });
 
+afterAll(async () => {
+  await db.destroy();  // Ensure to close DB connection after all tests
+})
+
 describe("GET /api/dragons/:id", () => {
   test("returns 200 and the correct dragon when it exists", async () => {
     // Insert a dragon into the database for testing
